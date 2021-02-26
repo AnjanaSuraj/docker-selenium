@@ -4,9 +4,12 @@ LABEL authors="Selenium <selenium-developers@googlegroups.com>"
 #================================================
 # Customize sources for apt-get
 #================================================
-RUN  echo "deb http://archive.ubuntu.com/ubuntu focal main universe\n" > /etc/apt/sources.list \
-  && echo "deb http://archive.ubuntu.com/ubuntu focal-updates main universe\n" >> /etc/apt/sources.list \
-  && echo "deb http://security.ubuntu.com/ubuntu focal-security main universe\n" >> /etc/apt/sources.list
+RUN  echo "deb [arch=amd64,i386] http://archive.ubuntu.com/ubuntu focal main universe\n" > /etc/apt/sources.list \
+  && echo "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports focal main universe\n" > /etc/apt/sources.list \
+  && echo "deb [arch=amd64,i386] http://archive.ubuntu.com/ubuntu focal-updates main universe\n" >> /etc/apt/sources.list \
+  && echo "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports focal-updates main universe\n" >> /etc/apt/sources.list \
+  && echo "deb [arch=amd64,i386] http://security.ubuntu.com/ubuntu focal-security main universe\n" >> /etc/apt/sources.list \
+  && echo "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports focal-security main universe\n" >> /etc/apt/sources.list
 
 # No interactive frontend during docker build
 ENV DEBIAN_FRONTEND=noninteractive \
